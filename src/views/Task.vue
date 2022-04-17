@@ -1,11 +1,23 @@
 <template>
   <div class="task-view">
-
+    <div class="flex flex-col flex-grow item-start justify-between px-4">
+      {{ task.name }}
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+  name: 'Task',
+  computed: {
+    ...mapGetters(['getTask']),
+    task () {
+      console.log(this.$route.params.id, 'params.id')
+      return this.getTask(this.$route.params.id)
+    }
+  }
 }
 </script>
 

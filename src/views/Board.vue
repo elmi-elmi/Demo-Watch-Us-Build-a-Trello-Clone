@@ -1,11 +1,48 @@
 <template>
   <div class="board">
+    <div class="flex flex-row items-start">
+      <div class="column" v-for="(column, $columnIndex) in board.columns" :key="$columnIndex">
+        <div class="flex items-center mb-2 font-bold">
+          {{ column.name }}
+        </div>
+        <div class="list-reset">
+          <div class="task" v-for="(task, $taskIndex) in column.tasks" :key="$taskIndex" @click="openTask(task)">
+            <span class="w-full flex-no-shrink font-bold">{{ task.name }}</span>
+            <p v-if="task.description" class="w-full flex-no-shrink mt-1 text-sm">{{ task.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="task-bg" v-if="isTaskOpen" @click.self="close">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
+  name: 'Board',
+  computed: {
+    ...mapState(['board']),
+    isTaskOpen () {
+      return this.$route.name === 'task'
+    }
+  },
+  methods: {
+    openTask (task) {
+      console.log('***', task.id, task.name)
+      this.$router.push({ name: 'task', params: { id: task.id } })
+    },
+    close () {
+      this.$router.push({ name: 'board' })
+    },
+    clickthis () {
+      this.$router.push({ name: 'mypath' })
+    }
+  }
 
 }
 </script>
@@ -26,6 +63,6 @@ export default {
 
 .task-bg {
   @apply pin absolute;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 </style>
