@@ -10,6 +10,8 @@
             <span class="w-full flex-no-shrink font-bold">{{ task.name }}</span>
             <p v-if="task.description" class="w-full flex-no-shrink mt-1 text-sm">{{ task.description }}</p>
           </div>
+          <input @keyup.enter="createTask($event, column.tasks)" type="text"
+                 class="block p-2 w-full bg-transparent outline-none " placeholder="+ Enter new task"/>
         </div>
       </div>
     </div>
@@ -33,14 +35,14 @@ export default {
   },
   methods: {
     openTask (task) {
-      console.log('***', task.id, task.name)
       this.$router.push({ name: 'task', params: { id: task.id } })
     },
     close () {
       this.$router.push({ name: 'board' })
     },
-    clickthis () {
-      this.$router.push({ name: 'mypath' })
+    createTask (e, tasks) {
+      this.$store.commit('CREATE_TASK', { tasks, name: e.target.value })
+      e.target.value = ''
     }
   }
 
