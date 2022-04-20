@@ -26,7 +26,6 @@ export default {
   computed: {
     ...mapGetters(['getTask']),
     task () {
-      console.log(this.$route.params.id, 'params.id')
       return this.getTask(this.$route.params.id)
     }
   },
