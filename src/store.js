@@ -22,13 +22,13 @@ export default new Vuex.Store({
     UPDATE_TASK (state, { task, key, value }) {
       task[key] = value
     },
-    MOVE_TASK (state, { indexFromColumn, indexFromTask, toTaskIndex, toColumnIndex }) {
-      const task = state.board.columns[indexFromColumn].tasks.splice(indexFromTask, 1)[0]
-      state.board.columns[toColumnIndex].tasks.splice(toTaskIndex, 0, task)
+    MOVE_TASK (state, { fromCol, fromTask, toTask, toCol }) {
+      const task = state.board.columns[fromCol].tasks.splice(fromTask, 1)[0]
+      state.board.columns[toCol].tasks.splice(toTask, 0, task)
     },
-    MOVE_COLUMN (state, { fromColumnIndex, toColumnIndex }) {
-      const column = state.board.columns.splice(fromColumnIndex, 1)[0]
-      state.board.columns.splice(toColumnIndex, 0, column)
+    MOVE_COLUMN (state, { fromCol, toCol }) {
+      const column = state.board.columns.splice(fromCol, 1)[0]
+      state.board.columns.splice(toCol, 0, column)
     },
     CREATE_COLUMN (state, { name }) {
       const tasks = []
