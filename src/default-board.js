@@ -38,29 +38,7 @@ export default {
       ]
     },
     {
-      name: 'done',
-      tasks: [
-        {
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, iste.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, iste.',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
-    },
-    {
       name: 'donetwo',
-      tasks: [
-        {
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, iste.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, iste.',
-          name: 'first task',
-          id: uuid(),
-          userAssigned: null
-        }
-      ]
-    },
-    {
-      name: 'donethree',
       tasks: [
         {
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, iste.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, iste.',
