@@ -9,7 +9,7 @@
       type:'column'}"
       class="column">
       <div class="flex items-center mb-2 font-bold">
-        {{ column.name }} -- {{ columnIndex }}
+        {{ column.name }}_________{{ columnIndex }}
       </div>
       <div class="list-reset">
         <TaskColumn
@@ -18,6 +18,11 @@
           :task="task"
           :taskIndex="$taskIndex"
           :columnIndex="columnIndex"
+        />
+        <input
+          @keyup.enter="createTask($event, column.tasks)"
+          type="text"
+          class="block p-2 w-full bg-transparent outline-none " placeholder="+ Enter new task"
         />
       </div>
     </AppDrag>
@@ -40,6 +45,12 @@ export default {
     columnIndex: {
       type: Number,
       required: true
+    }
+  },
+  methods: {
+    createTask (e, tasks) {
+      this.$store.commit('CREATE_TASK', { tasks, name: e.target.value })
+      e.target.value = ''
     }
   }
 }

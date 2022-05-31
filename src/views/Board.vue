@@ -1,12 +1,12 @@
 <template>
   <div class="board">
     <div class="flex flex-row items-start">
-      <Column
-        v-for="(column, $columnIndex) in board.columns"
-        :key="$columnIndex"
-        :column="column"
-        :columnIndex="$columnIndex"
-      />
+        <Column
+          v-for="(column, $columnIndex) in board.columns"
+          :key="$columnIndex"
+          :column="column"
+          :columnIndex="$columnIndex"
+        />
       <div class="column flex">
         <input
           class=" p-2 mr-2 flex-grow bg-transparent"
@@ -15,10 +15,7 @@
           v-model="newColumnName"
           @keyup.enter="createColumn">
       </div>
-      <input
-        @keyup.enter="createTask($event, column.tasks)"
-        type="text"
-        class="block p-2 w-full bg-transparent outline-none " placeholder="+ Enter new task"/>
+
     </div>
 
     <div class="task-bg" v-if="isTaskOpen" @click.self="close">
@@ -51,10 +48,6 @@ export default {
     },
     close () {
       this.$router.push({ name: 'board' })
-    },
-    createTask (e, tasks) {
-      this.$store.commit('CREATE_TASK', { tasks, name: e.target.value })
-      e.target.value = ''
     },
     createColumn () {
       this.$store.commit('CREATE_COLUMN', { name: this.newColumnName })
