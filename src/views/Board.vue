@@ -7,6 +7,7 @@
           :column="column"
           :columnIndex="$columnIndex"
         />
+
       <div class="column flex">
         <input
           class=" p-2 mr-2 flex-grow bg-transparent"
@@ -52,7 +53,7 @@ export default {
     createColumn () {
       this.$store.commit('CREATE_COLUMN', { name: this.newColumnName })
       this.newColumnName = ''
-    },
+    }
 
   }
 

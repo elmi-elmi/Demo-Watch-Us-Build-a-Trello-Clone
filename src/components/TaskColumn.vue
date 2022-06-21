@@ -10,7 +10,9 @@
       fromCol:columnIndex,
       type:'task'}"
       class="task"
-      @click="openTask(task)">
+      :key="taskIndex"
+      @click.native="openTask(task)"
+    >
       <span class="w-full flex-no-shrink font-bold">{{ task.name }} {{ taskIndex }} -- {{ columnIndex }}</span>
       <p v-if="task.description" class="w-full flex-no-shrink mt-1 text-sm">{{ task.description }}</p>
     </AppDrag>
@@ -40,6 +42,7 @@ export default {
   },
   methods: {
     openTask (task) {
+      console.log('****')
       this.$router.push({ name: 'task', params: { id: task.id } })
     }
   }

@@ -15,7 +15,7 @@ export default {
   props: {
     transferFrom: {
       type: Object,
-      required: true,
+      required: true
     }
   },
   methods: {
